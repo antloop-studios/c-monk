@@ -1,0 +1,31 @@
+{
+    "env": {},
+    "configurations": [
+        {
+            "name": "default",
+            "intelliSenseMode": "clang-x64",
+            "includePath": ["${workspaceFolder}"],
+            "cStandard": "c99",
+            "compilerArgs": [
+                "-Wall",
+                "-Wextra",
+                "-Werror",
+                "-pedantic",
+                "-Wno-gnu-zero-variadic-macro-arguments",
+                "-Wfloat-equal",
+                "-Wpointer-arith",
+                "-Wconversion",
+                "-Wuninitialized",
+                "-Winit-self",
+                "-Wcast-align",
+                "-Wunreachable-code"
+            ],
+            "browse": {
+                "path": ["${workspaceFolder}"],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
+        }
+    ],
+    "version": 4
+}

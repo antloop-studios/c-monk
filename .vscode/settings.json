@@ -1,0 +1,27 @@
+{
+    "files.associations": {
+        "*.c": "c",
+        "*.h": "c",
+        "filesystem": "c",
+        "istream": "c",
+        "ostream": "c",
+        "ratio": "c",
+        "array": "c",
+        "functional": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "utility": "c",
+        "__bit_reference": "c",
+        "__functional_base": "c",
+        "algorithm": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "deque": "c",
+        "__memory": "c",
+        "iterator": "c",
+        "limits": "c",
+        "memory": "c",
+        "random": "c",
+        "vector": "c"
+    }
+}

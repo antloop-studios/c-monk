@@ -1,0 +1,21 @@
+---
+BasedOnStyle: WebKit
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: 'false'
+AlignEscapedNewlines: Left
+AlignOperands: 'true'
+AlignTrailingComments: 'true'
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: 'false'
+BinPackArguments: 'false'
+BinPackParameters: 'false'
+BreakBeforeBinaryOperators: All
+BreakBeforeBraces: Allman
+BreakInheritanceList: BeforeComma
+ColumnLimit: '120'
+SortIncludes: 'true'
+PointerAlignment: Right
+IndentCaseLabels: 'true'
+Cpp11BracedListStyle: 'true'
+
+...
