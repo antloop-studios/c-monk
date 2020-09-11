@@ -6,7 +6,7 @@ INCLUDE=-I.
 RELFLAGS=-O3
 DBGFLAGS=-g
 
-VGFLAGS=-q -s --leak-check=full --show-leak-kinds=all
+VGFLAGS=-q --leak-check=full --show-leak-kinds=all
 
 TESTS=$(shell find test/ -type f -name '*.c')
 
