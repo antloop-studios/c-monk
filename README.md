@@ -49,6 +49,8 @@ map_item"value"map_item2"raw string\nthis can span multiple lines\nthe baseline 
 
 ### Basics
 
+- Monk configuration files use the extension `.monk`
+
 - Comments start with a semicolon `;` and end at a newline. There are no multiline comments
 ```lua
 ; hello, this is a comment
