@@ -70,74 +70,6 @@ but {
 
 ### Datatypes
 
-#### String
-
-- A String is any multiline byte sequence enclosed with single or double quotes
-```lua
-key "Здравствуйте"
-```
-- Quotes can be escaped using a single backslash: `\"` or `\'`
-```lua
-key "\"hello\""
-other '\'wack\''
-```
-- A few common escapes are available as well: `\n` `\r` `\t`
-```lua
-hello "\tworld\n"
-```
-- Strings may merge multiple lines into one by escaping the end of line
-```lua
-key "this is a very long string \
-that spans multiple lines \
-but will result in one line when parsed"
-```
-- All other escapes will simply yield the byte that follows
-```lua
-this "does n\othing but result in a literal 'o'"
-```
-- The String's baseline is determined by the indentation of the line where the first quote appears
-```lua
-key {
-    nestedkey "hello
-    | the string is parsed as if the start of line is where this vertical bar is
-    <-- this indent will not appear in the string,
-    the baseline is matched up with the indent of the quote"
-
-    otherkey
-        "the indent of this string is two levels deep
-        ^ but baseline starts with the quote
-            <-- so only one of three indents here will be in the resulting value
-    negative indent is ignored, and will be treated as it's start of line"
-}
-```
-- Spaces and tabs are both treated as a single unit of indentation
-- Unclosed strings return an error [MONK_ERR_UNCLOSED_STRING](src/reader.h#L24)
-
-
-#### List
-
-- A List starts with `[` and ends with `]`
-- It is a heterogeneous collection of Strings, Lists and Maps
-```lua
-mylist [
-    "bread"
-    [
-        "banana"
-        "apple"
-    ]
-    {
-        key "value"
-    }
-]
-```
-- Unquoted Strings (Key literals) are treated as errors [MONK_ERR_EXPECTED_LIST_VALUE](src/reader.h#L28)
-```lua
-mylist [
-    this is wrong and will return an error
-]
-```
-- Unclosed lists return an error [MONK_ERR_UNCLOSED_LIST](src/reader.h#L22)
-
 #### Map
 
 - A Map starts with `{` and ends with `}`
@@ -205,6 +137,73 @@ key "value"
 key "will fail"
 ```
 - Unclosed maps return an error [MONK_ERR_UNCLOSED_MAP](src/reader.h#L23)
+
+#### List
+
+- A List starts with `[` and ends with `]`
+- It is a heterogeneous collection of Strings, Lists and Maps
+```lua
+mylist [
+    "bread"
+    [
+        "banana"
+        "apple"
+    ]
+    {
+        key "value"
+    }
+]
+```
+- Unquoted Strings (Key literals) are treated as errors [MONK_ERR_EXPECTED_LIST_VALUE](src/reader.h#L28)
+```lua
+mylist [
+    this is wrong and will return an error
+]
+```
+- Unclosed lists return an error [MONK_ERR_UNCLOSED_LIST](src/reader.h#L22)
+
+#### String
+
+- A String is any multiline byte sequence enclosed with single or double quotes
+```lua
+key "Здравствуйте"
+```
+- Quotes can be escaped using a single backslash: `\"` or `\'`
+```lua
+key "\"hello\""
+other '\'wack\''
+```
+- A few common escapes are available as well: `\n` `\r` `\t`
+```lua
+hello "\tworld\n"
+```
+- Strings may merge multiple lines into one by escaping the end of line
+```lua
+key "this is a very long string \
+that spans multiple lines \
+but will result in one line when parsed"
+```
+- All other escapes will simply yield the byte that follows
+```lua
+this "does n\othing but result in a literal 'o'"
+```
+- The String's baseline is determined by the indentation of the line where the first quote appears
+```lua
+key {
+    nestedkey "hello
+    | the string is parsed as if the start of line is where this vertical bar is
+    <-- this indent will not appear in the string,
+    the baseline is matched up with the indent of the quote"
+
+    otherkey
+        "the indent of this string is two levels deep
+        ^ but baseline starts with the quote
+            <-- so only one of three indents here will be in the resulting value
+    negative indent is ignored, and will be treated as it's start of line"
+}
+```
+- Spaces and tabs are both treated as a single unit of indentation
+- Unclosed strings return an error [MONK_ERR_UNCLOSED_STRING](src/reader.h#L24)
 
 ## API
 
